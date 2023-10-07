@@ -4,10 +4,15 @@ document.addEventListener('DOMContentLoaded', function() {
   questions.forEach(question => {
     const toggleAnswer = () => {
       const answer = question.querySelector('.answer');
-      answer.style.display = (answer.style.display === 'block') ? 'none': 'block';
-
       const arrow = question.querySelector('.arrow');
-      arrow.classList.toggle('rotate');
+
+      if (answer.style.maxHeight) {
+        answer.style.maxHeight = null;
+        arrow.classList.remove('rotate');
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+        arrow.classList.add('rotate');
+      }
     }
 
     question.addEventListener('click', toggleAnswer);
