@@ -1,20 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const questions = document.querySelectorAll('.question');
+  const questions = document.querySelectorAll('.question')
 
   questions.forEach(question => {
     const toggleAnswer = () => {
-      const answer = question.querySelector('.answer');
-      const arrow = question.querySelector('.arrow');
+      const answer = question.querySelector('.answer')
+      const arrow = question.querySelector('.arrow')
+      const h2 = question.querySelector('h2')
 
-      if (answer.style.maxHeight) {
-        answer.style.maxHeight = null;
-        arrow.classList.remove('rotate');
-      } else {
-        answer.style.maxHeight = answer.scrollHeight + "px";
-        arrow.classList.add('rotate');
-      }
+      answer.style.display = (answer.style.display === 'block') ? 'none': 'block'
+      arrow.classList.toggle('rotate')
+      h2.classList.toggle('bold-font')
     }
-
-    question.addEventListener('click', toggleAnswer);
+    question.addEventListener('click', toggleAnswer)
   })
 })
